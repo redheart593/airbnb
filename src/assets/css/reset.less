@@ -1,0 +1,29 @@
+@import "./variables.less";
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+li {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  vertical-align: top;
+}
+
+// less 可以使用变量，这里使用的是引用variables.less中的变量
+a {
+  color: @textColor;
+  text-decoration: none;
+}
+
+li,
+ul {
+  list-style: none;
+}
