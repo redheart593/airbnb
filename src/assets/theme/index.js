@@ -1,3 +1,6 @@
+
+//用于给themeprovider 传给一个对象，之后把根组件全部包含，之后在cssinjs的样式就可以用props.theme.xx.某一个  使用
+//多的属性就没必要了
 const theme = {
   color: {
     primaryColor: "#ff385c",
