@@ -1,4 +1,11 @@
+import { getHomeGoodPriceData } from '@/services'
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+export const fetchHomeDataAction = createAsyncThunk("fetchdata", async (payload) => {
+  const res = await getHomeGoodPriceData()
+  return res
+})
+
+
 const homeSlice = createSlice({
   name: "home",
   initialState: {
@@ -8,6 +15,11 @@ const homeSlice = createSlice({
     changeGoodPriceInfoAction(state, { payload }) {
       state.goodPriceInfo = payload
     }
+  },
+  extraReducers: build => {
+    build.addCase(fetchHomeDataAction.fulfilled, (state, { payload }) => {
+      state.goodPriceInfo = payload
+    })
   }
 })
 

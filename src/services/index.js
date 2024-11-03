@@ -1,4 +1,4 @@
-import request from "./request";
+import hyRequest from "./request"
 
-
-export default request
+export default hyRequest
+export * from "./modules/home"
