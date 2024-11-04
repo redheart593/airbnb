@@ -16,7 +16,7 @@ const HeaderRight = memo(() => {
     function windowHandleClick() {
       setshouwPanel(false)
     }
-    window.addEventListener("click", windowHandleClick, true)//表示的是事件捕获，默认的是冒泡，这样会导致触发显示的时候，会向上触发这个时间，这里既可以禁止冒泡，也可以换为捕获
+    window.addEventListener("click", windowHandleClick, true)//表示的是事件捕获，默认的是冒泡，这样会导致触发显示的时候，会向上触发这个事件，这里既可以禁止冒泡，也可以换为捕获
     return () => {//取消事件
       window.removeEventListener('click', windowHandleClick)
     }
