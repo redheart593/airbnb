@@ -5,6 +5,7 @@ import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { fetchHomeDataAction } from '@/store/modules/home'
 import SectionHeader from '@/components/section-header'
 import RoomItem from '@/components/room-item'
+import SectionRooms from '@/components/section-rooms'
 const Home = memo(() => {
     const { goodPriceInfo } = useSelector((state) => state.home, shallowEqual)
     const dispatch = useDispatch()
@@ -18,11 +19,7 @@ const Home = memo(() => {
                 <div className="good-price">
                     <SectionHeader title={goodPriceInfo.title} ></SectionHeader>
                     {/* 可选链 */}
-                    <ul className='room-list'>
-                        {goodPriceInfo.list?.slice(0, 8).map((item) => {
-                            return <RoomItem key={item.id} itemData={item}></RoomItem>
-                        })}
-                    </ul>
+                    <SectionRooms roomList={goodPriceInfo.list}></SectionRooms>
                 </div>
             </div>
 
