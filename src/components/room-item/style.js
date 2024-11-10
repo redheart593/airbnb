@@ -2,23 +2,25 @@ import styled from "styled-components";
 
 
 export const ItemWrapper = styled.div`
-    box-sizing:border-box;
-    width:25%;
-    padding:8px;//使用padding+border-box的方法可以让，盒子宽度保持不变，内容向内撑开8px，外面看roomList的布局
-    .inner {
+  flex-shrink: 0;//每一个项目不能被压缩
+  box-sizing: border-box;
+  width: ${props => props.itemWidth};
+  padding: 8px;
+
+  .inner {
     width: 100%;
   }
 
   .cover {
     position: relative;
     box-sizing: border-box;
-    padding: 66.66% 8px 0;//这里配合下面img的绝对定位，是为了想让这个盒子占据三分之二的宽度，避免图片格式不一样
+    padding: 66.66% 8px 0;
     border-radius: 3px;
     overflow: hidden;
 
     img {
-      position: absolute;//不用绝对定位，会被内容会被挤下去
-      left: 0;//下面的样式是为了使他占据父盒子cover的100%
+      position: absolute;
+      left: 0;
       top: 0;
       width: 100%;
       height: 100%;
@@ -47,6 +49,7 @@ export const ItemWrapper = styled.div`
   .price {
     margin: 8px 0;
   }
+
   .bottom {
     display: flex;
     align-items: center;

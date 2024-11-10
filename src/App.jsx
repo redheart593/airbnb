@@ -7,7 +7,6 @@ import request from './services/index'
 const App = memo(() => {
   useEffect(() => {
     request.get({ url: "/home/discount" }).then(res => {
-      console.log(res);
     })
   }, [])
   return (

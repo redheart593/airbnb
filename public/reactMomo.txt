@@ -1,5 +1,5 @@
 import React, { memo } from 'react'
-const App = memo(() => {
+const App = memo((props) => {
   return (
    
   )

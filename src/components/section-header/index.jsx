@@ -10,7 +10,7 @@ const SectionHeader = memo((props) => {
     </HeaderWrapper>
   )
 })
-SectionHeader.PropTypes = {
+SectionHeader.propTypes = {
   title: PropTypes.string,
   subtitle: PropTypes.string
 
