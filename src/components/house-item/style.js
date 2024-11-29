@@ -2,8 +2,9 @@ import styled from "styled-components";
 
 
 export const ItemWrapper = styled.div`
+flex-shrink: 0;
 box-sizing: border-box;
-    width: 25%;
+    width: ${props => props.$itemWidth};
     padding: 8px;
     
     .inner {
@@ -32,13 +33,14 @@ box-sizing: border-box;
     margin: 10px 0 5px;
     font-size: 12px;
     font-weight: 700;
-    color: ${props => props.verifyColor};
+    color: ${props => props.$verifyColor};
   }
 
   .name {
+    margin-top: 8px;
     font-size: 16px;
     font-weight: 700;
-
+    color: #484848;
     overflow: hidden;  
     text-overflow: ellipsis; 
     display: -webkit-box; 
@@ -48,6 +50,7 @@ box-sizing: border-box;
 
   .price {
     margin: 8px 0;
+    color: #484848;
   }
 
   .bottom {

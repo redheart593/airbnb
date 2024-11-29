@@ -4,9 +4,12 @@ import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import HomeBanner from './c-cpns/home-banner'
 import { HomeWrapper } from './style'
 import { fetchHomeDataAction } from '@/store/modules/home'
-import SectionHeader from '@/components/section-header'
-import RoomItem from '@/components/house-item'
-import SectionRooms from '@/components/section-rooms'
+import HomeSectionV1 from './c-cpns/home-section-v1'
+import HomeSectionV2 from './c-cpns/home-section-v2'
+import { isEmptyO } from '@/utils/is-empty-object'
+import HomeLongfor from './c-cpns/home-longfor'
+import HomeSectionV3 from './c-cpns/home-section-v3'
+
 
 const Home = memo(() => {
     /** useSelector可以将存储在store中的所有状态拿过来
@@ -14,10 +17,16 @@ const Home = memo(() => {
      *  2、useSelector中return 一个对象赋值给常量。将store中要获取的状态赋值给对象的属性，一般属性名与状态相同。
      *  3、useSelector更新依赖于要获取的状态，默认是比较引用
      */
-    const { goodPriceInfo } = useSelector((state) => {
-        return {
-            goodPriceInfo: state.home.goodPriceInfo
-        }
+    const { goodPriceInfo, highScoreInfo, discountInfo, recommendInfo, longforInfo, plusInfo } = useSelector((state) => {
+        // 记得return多行需要加小括号！！！！
+        return ({
+            goodPriceInfo: state.home.goodPriceInfo,
+            highScoreInfo: state.home.highScoreInfo,
+            discountInfo: state.home.discountInfo,
+            recommendInfo: state.home.recommendInfo,
+            longforInfo: state.home.longforInfo,
+            plusInfo: state.home.plusInfo
+        })
     }, shallowEqual) // shallowEqual作用是改为浅比较，如果对象引用改变但内容不变组件就不需要重新渲染。有的时候只是创建了新对象，但内容相同，这样就无需重新渲染
 
     // 发起相关网络请求，如果网络请求是同步的（阻塞式），网络阻塞时主线程会被卡住，直到网络响应返回。产生如下问题：
@@ -31,17 +40,19 @@ const Home = memo(() => {
         dispatch(fetchHomeDataAction())
     }, [dispatch])
 
+
     return (
         <HomeWrapper>
             <HomeBanner />
             <div className="content">
-                {/* 性价比模块 */}
-                <div className="goodprice">
-                    {/* 先引入模块头部组件 */}
-                    <SectionHeader title={goodPriceInfo.title} />
-                    {/* 再引入模块房间列表组件 */}
-                    <SectionRooms roomList={goodPriceInfo.list} />
-                </div>
+                {/* 将每部分房间列表封装为组件，传入数据 */}
+                {/* 封装一个isEmptyO函数来判断是否有数据 */}
+                {isEmptyO(longforInfo) && <HomeLongfor infoData={longforInfo} />}
+                {isEmptyO(discountInfo) && <HomeSectionV2 infoData={discountInfo} />}
+                {isEmptyO(recommendInfo) && <HomeSectionV2 infoData={recommendInfo} />}
+                {isEmptyO(goodPriceInfo) && <HomeSectionV1 infoData={goodPriceInfo} />}
+                {isEmptyO(highScoreInfo) && <HomeSectionV1 infoData={highScoreInfo} />}
+                {isEmptyO(plusInfo) && <HomeSectionV3 infoData={plusInfo} />}
             </div>
         </HomeWrapper>
     )
