@@ -9,6 +9,8 @@ import HomeSectionV2 from './c-cpns/home-section-v2'
 import { isEmptyO } from '@/utils/is-empty-object'
 import HomeLongfor from './c-cpns/home-longfor'
 import HomeSectionV3 from './c-cpns/home-section-v3'
+import AppHeader from '@/components/app-header'
+import AppFooter from '@/components/app-footer'
 
 
 const Home = memo(() => {
@@ -42,19 +44,25 @@ const Home = memo(() => {
 
 
     return (
-        <HomeWrapper>
-            <HomeBanner />
-            <div className="content">
-                {/* 将每部分房间列表封装为组件，传入数据 */}
-                {/* 封装一个isEmptyO函数来判断是否有数据 */}
-                {isEmptyO(longforInfo) && <HomeLongfor infoData={longforInfo} />}
-                {isEmptyO(discountInfo) && <HomeSectionV2 infoData={discountInfo} />}
-                {isEmptyO(recommendInfo) && <HomeSectionV2 infoData={recommendInfo} />}
-                {isEmptyO(goodPriceInfo) && <HomeSectionV1 infoData={goodPriceInfo} />}
-                {isEmptyO(highScoreInfo) && <HomeSectionV1 infoData={highScoreInfo} />}
-                {isEmptyO(plusInfo) && <HomeSectionV3 infoData={plusInfo} />}
-            </div>
-        </HomeWrapper>
+        <>
+            <AppHeader isFixed={true} topAlpha={true} />
+            <HomeWrapper>
+
+                <HomeBanner />
+                <div className="content">
+                    {/* 将每部分房间列表封装为组件，传入数据 */}
+                    {/* 封装一个isEmptyO函数来判断是否有数据 */}
+                    {isEmptyO(longforInfo) && <HomeLongfor infoData={longforInfo} />}
+                    {isEmptyO(discountInfo) && <HomeSectionV2 infoData={discountInfo} />}
+                    {isEmptyO(recommendInfo) && <HomeSectionV2 infoData={recommendInfo} />}
+                    {isEmptyO(goodPriceInfo) && <HomeSectionV1 infoData={goodPriceInfo} />}
+                    {isEmptyO(highScoreInfo) && <HomeSectionV1 infoData={highScoreInfo} />}
+                    {isEmptyO(plusInfo) && <HomeSectionV3 infoData={plusInfo} />}
+                </div>
+
+            </HomeWrapper>
+
+        </>
     )
 })
 

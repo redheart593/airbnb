@@ -9,7 +9,7 @@ import AppFooter from './components/app-footer'
 const App = memo(() => {
   return (
     <div className='app'>
-      <AppHeader />
+
       <div className="page">
         {/* 通过RouterProvider接受路由实例并渲染 */}
         <RouterProvider router={routes} />

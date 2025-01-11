@@ -38,7 +38,7 @@ const HomeSectionV2 = memo((props) => {
             <SectionHeader title={infoData.title} subtitle={infoData.subtitle} />
             {/* 选中的tab名在子组件中，通过传递函数的方式将tab名子传父 */}
             <SectionTabs tabNames={tabNames} tabClick={tabClick} />
-            <SectionRooms roomList={infoData.dest_list?.[name]} itemWidth="33.3333%" />
+            <SectionRooms houseList={infoData.dest_list?.[name]} itemWidth="33.3333%" />
             <SectionFooter name={name} /*将当前选中的tab名传给footer，在其中显示*/ />
         </SectionV2Wrapper>
     )

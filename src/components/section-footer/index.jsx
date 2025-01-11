@@ -11,6 +11,7 @@ const SectionFooter = memo((props) => {
     // 添加跳转逻辑，点击更多时跳转到详情页
     const navigate = useNavigate()  // 使用useNavigate实现
     function moreClickHandle() {
+        window.scrollTo(0, 0)
         navigate("/entire") // 给路由后边加上括号里的字符串，跳转至该页面
     }
     return (

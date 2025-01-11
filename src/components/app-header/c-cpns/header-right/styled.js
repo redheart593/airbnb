@@ -26,6 +26,7 @@ export const RightWrapper = styled.div`
   .btns {
     display: flex;
     align-items: center;
+    color: ${props => props.theme.isAlpha ? "#fff" : props.theme.color.textColor};
 
     .btn {
       height: 18px;
@@ -36,7 +37,7 @@ export const RightWrapper = styled.div`
       
       // 在css-in-js less或sass中相当于.btns:hover {}
       &:hover {
-        background-color: #f5f5f5;
+        background-color: ${props => props.theme.isAlpha ? "rgba(255,255,255,.1)" : "#f5f5f5"};
       }
     }
   }
